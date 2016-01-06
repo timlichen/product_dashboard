@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Product</title>
+    <style type="text/css">
+    body {
+      margin-top: 2em;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Editing Product</h1>
+  <form action="/products/<%= @product.id %>" method="post">
+    <input type="hidden" name="_method" value="patch"/>
+    <input name="authenticity_token"
+      value="<%= form_authenticity_token %>" type="hidden">
+
+    <div class="row">
+      <div class="six columns">
+        <label for = "productName">Name</label>
+        <input type="text" name="product[name]" class="u-full-width"
+          id="productName" placeholder= "<%=@product.name %>">
+      </div>
+
+      <div class="six columns">
+        <label for = "productDescription">Description</label>
+        <input type="text" name="product[description]" class="u-full-width"
+        id="productDescription" placeholder= "<%=@product.description %>">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="six columns">
+        <label for = "productPricing">Pricing</label>
+        <input type="text" name="product[pricing]" class="u-full-width"
+        id="productPricing" placeholder= "<%=@product.pricing %>">
+      </div>
+
+      <div class="six columns">
+        <label for ="productCategory">Category</label>
+        <select name="product[category_id]" class="u-full-width" id="categorySelection">
+          <% @categories.each { |category| %>
+          <option value="<%= category.id %> "><%= category.name %> </option>
+            <% } %>
+        </select>
+      </div>
+
+    </div>
+      <input class="button-primary" type="submit" value="Update Product">
+      <a class="button" href="/">Go Back</a>
+  </form>
+  <div class="row">
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>New Product</title>
+</head>
+  <style type="text/css">
+    body{
+      margin-top: 2em;
+    }
+  </style>
+<body>
+<div class="container">
+  <h1>New Product</h1>
+  <form action="products/create" method="post">
+    <input type='hidden' value="<%= form_authenticity_token %>"
+    name="authenticity_token">
+  <div class="row">
+    <div class="six columns">
+      <label for="productName">Name</label>
+        <input type="text" name="product[name]" id="productName"
+        class="u-full-width">
+    </div>
+
+    <div class="six columns">
+      <label for="productDescription">Description</label>
+        <input type="text" name="product[description]" id="productDescription"
+          class="u-full-width">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="six columns">
+      <label for="productPrice">Price</label>
+        <input type="text" name="product[pricing]" id="productPrice"
+          class="u-full-width">
+    </div>
+
+    <div class="six columns">
+        <label for ="productCategory">Category</label>
+        <select name="product[category_id]" class="u-full-width" id="categorySelection">
+          <% @categories.each { |category| %>
+          <option value="<%= category.id %> "><%= category.name %> </option>
+            <% } %>
+        </select>
+      </div>
+  </div>
+  <input class="button-primary" type="submit" value="Add Product">
+  </form>
+</div>
+
+</body>
+</html>
