@@ -20,12 +20,14 @@
           <th>Product</th>
         </thead>
         <tbody>
-          <tr>
-            <% @comments.each { |text| %>
-              <td><%= text.comment %></td>
-              <td><%= text.product_id %></td>
+            <% @products.each { |product| %>
+            <tr>
+              <td><% product.comments.each { |text| %>
+                  <%= text.comment %>
+                <% } %></td>
+              <td><%= product.name %></td>
+            </tr>
           <% } %>
-          </tr>
         </tbody>
         </table>
       </div>

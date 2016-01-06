@@ -1,9 +1,7 @@
 class CommentsController < ApplicationController
   def index
     @comments = Comment.eager_load(:product)
-
-
-
+    @products = Product.all
   end
 
   def create
