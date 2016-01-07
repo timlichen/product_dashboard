@@ -1,3 +1,7 @@
 == README
 
 product_dashboard app
+
+#Summary
+
+This ruby on rails app allows users to add, remove, and update products. Assign the products to categories and leave comments about the products. This app was designed with RESTful routes in mind.
